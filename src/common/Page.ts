@@ -770,7 +770,8 @@ export class Page extends EventEmitter {
 
     const {timeout = this.#timeoutSettings.timeout()} = options;
     const promise = createDeferredPromiseWithTimer<FileChooser>(
-      `Waiting for \`FileChooser\` failed: ${timeout}ms exceeded`
+      `Waiting for \`FileChooser\` failed: ${timeout}ms exceeded`,
+      timeout
     );
     this.#fileChooserPromises.add(promise);
     return promise.catch(error => {
